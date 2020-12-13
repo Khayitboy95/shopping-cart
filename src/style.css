@@ -1,0 +1,12 @@
+.menu-wrapper>.menu{
+    margin: 20px 0 30px 0 !important;
+}
+.card .image img{
+    height: 300px !important;
+    object-fit: cover;
+}
+.card .header{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
