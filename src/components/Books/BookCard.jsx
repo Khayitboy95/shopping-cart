@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
-const BookCard = ({title, author, price, image, onAddToCard}) => (
-  <Card>
+const BookCard = ({book, onAddToCard, addedCount}) => {
+
+  const {title, author, price, image, id} = book;
+
+  const onAdd = () => {
+    onAddToCard(book);
+  }
+
+  return (
+    <Card>
     <Image src={image} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{title}</Card.Header>
@@ -16,8 +24,9 @@ const BookCard = ({title, author, price, image, onAddToCard}) => (
         {price}
       </a>
     </Card.Content>
-    <Button onClick={onAddToCard}>Добавить в корзину (3)</Button>
+    <Button onClick={onAdd}>Добавить в корзину {addedCount > 0 && `(${addedCount})`}</Button>
   </Card>
-)
+  )
+}
 
 export default BookCard

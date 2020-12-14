@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { setBooksAC } from '../../redux/books';
 import Books from './Books';
 import orderBy from 'lodash/orderBy';
-import { addBookToCartAC, removeBookFromCartAC } from '../../redux/cart';
+import { addBookToCartAC } from '../../redux/cart';
 
 const sortBy = (books, filterBy) => {
     switch (filterBy) {
@@ -27,10 +27,11 @@ const sortBy = (books, filterBy) => {
         return sortBy(filterBooks(books, searchQuery), filterBy);
     }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({booksPage,filter,cartPage}) => {
     return{
-        books:state.booksPage.books && searchBooks(state.booksPage.books, state.filter.filterBy, state.filter.searchQuery),
-        isLoading: state.booksPage.isLoading
+        books:booksPage.books && searchBooks(booksPage.books, filter.filterBy, filter.searchQuery),
+        isLoading: booksPage.isLoading,
+        addedCount: cartPage.books.reduce((count, book) => count+ (book.id === id ? 1 : 0),0,) 
     }
 }
 
@@ -41,9 +42,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         onAddToCard:(book) => {
             dispatch(addBookToCartAC(book));
-        },
-        removeAddToCard:(book) => {
-            dispatch(removeBookFromCartAC);
         }
     }
 }

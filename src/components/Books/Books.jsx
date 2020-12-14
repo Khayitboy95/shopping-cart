@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import MenuContainer from '../Menu/Menu';
 import { CardGroup, Container } from 'semantic-ui-react';
 import BookCard from './BookCard';
 import FilterContainer from '../Filter/FilterContainer';
+import MenuContainer from '../Menu/MenuContainer';
 
 class Books extends React.Component {
 
@@ -17,13 +17,13 @@ class Books extends React.Component {
     render() {
         return (
           <Container>
-            <MenuContainer />
+            <MenuContainer/>
             <FilterContainer />
             <CardGroup itemsPerRow={4}>
             {!this.props.isLoading
                 ? "Loading..."
                 : this.props.books.map((book) => (
-                    <BookCard removeAddToCard={this.props.removeAddToCard} onAddToCard={this.props.onAddToCard} key={book.id} {...book} />
+                    <BookCard addedCount={this.props.addedCount} onAddToCard={this.props.onAddToCard} key={book.id} book={book} />
                   ))}
             </CardGroup>
           </Container>

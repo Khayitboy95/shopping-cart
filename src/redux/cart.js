@@ -3,6 +3,7 @@ const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART';
 
 const initialState = {
     books:[],
+    currentId: null
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -19,15 +20,17 @@ const cartReducer = (state = initialState, action) => {
 }
 
 
-export const addBookToCartAC = () => {
+export const addBookToCartAC = (book) => {
     return {
-        type: ADD_BOOK_TO_CART
+        type: ADD_BOOK_TO_CART,
+        book
     }
 }
 
-export const removeBookFromCartAC = () => {
+export const removeBookFromCartAC = (id) => {
     return {
-      type: REMOVE_BOOK_FROM_CART
+      type: REMOVE_BOOK_FROM_CART,
+      id
     };
   };
 
