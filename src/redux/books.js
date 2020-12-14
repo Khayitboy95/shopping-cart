@@ -30,8 +30,9 @@ export const setBooksAC = (books) => {
 export const toogleIsLoadungAC = (isLoading) => {
     return {
       type: TOGGLE_IS_LOADING,
-      isLoading,
-    };
-  };
+      isLoading
+    }
+}
+
 
 export default booksReducer;

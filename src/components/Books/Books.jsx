@@ -3,6 +3,7 @@ import React from 'react';
 import MenuContainer from '../Menu/Menu';
 import { CardGroup, Container } from 'semantic-ui-react';
 import BookCard from './BookCard';
+import FilterContainer from '../Filter/FilterContainer';
 
 class Books extends React.Component {
 
@@ -17,11 +18,12 @@ class Books extends React.Component {
         return (
           <Container>
             <MenuContainer />
+            <FilterContainer />
             <CardGroup itemsPerRow={4}>
             {!this.props.isLoading
                 ? "Loading..."
                 : this.props.books.map((book) => (
-                    <BookCard key={book.id} {...book} />
+                    <BookCard removeAddToCard={this.props.removeAddToCard} onAddToCard={this.props.onAddToCard} key={book.id} {...book} />
                   ))}
             </CardGroup>
           </Container>
