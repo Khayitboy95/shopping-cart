@@ -2,8 +2,7 @@ const ADD_BOOK_TO_CART = "ADD_BOOK_TO_CART";
 const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART';
 
 const initialState = {
-    books:[],
-    currentId: null
+    books:[]
 }
 
 const cartReducer = (state = initialState, action) => {

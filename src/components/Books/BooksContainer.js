@@ -21,8 +21,6 @@ const sortBy = (books, filterBy) => {
         return books.filter(elem => elem.title.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 || elem.author.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 );
     }
 
-    
-
     const searchBooks = (books, filterBy, searchQuery) => {
         return sortBy(filterBooks(books, searchQuery), filterBy);
     }
@@ -30,8 +28,7 @@ const sortBy = (books, filterBy) => {
 const mapStateToProps = ({booksPage,filter,cartPage}) => {
     return{
         books:booksPage.books && searchBooks(booksPage.books, filter.filterBy, filter.searchQuery),
-        isLoading: booksPage.isLoading,
-        addedCount: cartPage.books.reduce((count, book) => count+ (book.id === id ? 1 : 0),0,) 
+        isLoading: booksPage.isLoading
     }
 }
 

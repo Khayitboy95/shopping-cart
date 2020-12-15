@@ -32,7 +32,7 @@ const MenuComponent = ({total, count, books, removeAddToCard}) => {
                 </Menu.Item>
               }
               content={books && books.map(book => (
-                <CartComponent {...book} removeAddToCard={removeAddToCard} />
+                <CartComponent key={book.id} {...book} removeAddToCard={removeAddToCard} />
               ))}
               on="click"
               hideOnScroll

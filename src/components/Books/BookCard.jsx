@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
-const BookCard = ({book, onAddToCard, addedCount}) => {
+const BookCard = ({book, onAddToCard ,addedCount }) => {
 
-  const {title, author, price, image, id} = book;
+  const {title, author, price, image } = book;
+
 
   const onAdd = () => {
     onAddToCard(book);
